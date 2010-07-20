@@ -1,0 +1,121 @@
+
+<html>
+    <head>
+        <title>Kilo</title>
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/jqtouch.css">
+		-->
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/theme.css">
+		-->		
+		
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/bundle.css">
+				
+		<script type="text/javascript"  src="http://localhost/iPhone/jqTouch/xml2json.js"></script>
+		
+		 <script type="text/javascript" src="ccpc2.js"></script>
+        <script type="text/javascript" src="jqtouch/jquery.js"></script>
+        <script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+       <style>
+	.contact
+	{
+		padding: 8px;
+		background:rgba(64,64,64,0.5);
+		border: 1px solid rgba(128,128,128,0.5);
+		opacity: 0.8;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+		margin-bottom: .5em;
+		font: white;
+		font-family:arial;
+	}
+
+
+	</style>
+
+		<style type="text/css">
+		
+		.JobFileName
+		{
+			//font-size:20pt;
+			font-weight:bolder;
+		}
+		
+		.CustomerName
+		{
+		font-size:7pt;
+		//font-style:italic;
+		
+		}
+			.alternate
+			{
+				background-color: #DDDDDD;  //#99CC00 -> red
+				
+			}
+			
+			.tabled
+			{
+				font-size:16pt;
+				height:100px;
+			}
+		</STYLE>
+		<script type="text/javascript">
+		//$(document).ready(function(){
+
+		//('#events li:nth-child(odd)').addClass('alternate');
+
+		//});
+	</script>
+    </head>
+    <body onload="getQuoteMenuStart()">
+	<div id="container">
+		<div id="header">
+				<h2 id="logo">iCCPC</h2>
+		</div>
+		<ul id="nav">
+			
+		</ul>
+		<div id="content">
+			<div id="quotemenu">
+				
+				<div class="toolbar">
+						<h1>Quote Menu</h1>
+						<a id="backbutton" class="button back" href="#">QuoteFile Details</a>
+				</div>
+				<!--
+				<div id="textdiv">
+					<textarea id="texta" name="texta" cols="60" rows="10">Stuff</textarea>
+				</div>
+				-->
+				<ul class="events" id="eventslist">
+					<li class="day-break">
+						<span class="day">Thursday</span>
+						<span class="num">May 20</span>
+					</li>
+					<li class="arrow"><a id="0" href="#jobs" onclick="readrows();">JobFiles</a></li>
+					<li class="event" id="entryTemplate">
+						<a id="shipmaplink" href="shipmap.html?qid=">
+							<img alt="Shipping" class="avatar" src="themes/jqt/img/shipping.png"><span class="Shipping" >Shipping</span><BR>
+						</a>
+					</li>
+					<li class="event" id="entryTemplate">
+						<a id="q" href="http://pit-cs-m901.ingerrand.com/Reports/CroqDetail.xls">
+							<img alt="Reports" class="avatar" src="themes/jqt/img/reports.png"><span class="Reports" >Reports</span><BR>
+						</a>
+					</li>
+					<li class="event" id="entryTemplate">
+						<a id="q" href="Pricing.html?qid=">
+							<img alt="Pricing" class="avatar" src="themes/jqt/img/pricing.png"><span class="Pricing" >Pricing</span><BR>
+						</a>
+					</li>
+					<li class="event" id="entryTemplate">
+						<a id="contactdeatillink" href="contactdetail.html?qid=">
+							<img alt="More" class="avatar" src="themes/jqt/img/setup.png"><span class="More" >Contact Details</span><BR>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+    </body>
+</html>

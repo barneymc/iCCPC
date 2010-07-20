@@ -1,0 +1,129 @@
+
+<html>
+    <head>
+        <title>Kilo</title>
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/jqtouch.css">
+		-->
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/theme.css">
+		-->		
+		
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/bundle.css">
+				
+		<script type="text/javascript"  src="http://localhost/iPhone/jqTouch/xml2json.js"></script>
+		
+		 <script type="text/javascript" src="ccpc2.js"></script>
+        <script type="text/javascript" src="jqtouch/jquery.js"></script>
+        <script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+       <style>
+	   #social_nav_horizontal {
+  margin-left: 100px;
+  font-family: Futura, Verdana, Sans-Serif;
+  font-size: 18px;
+  color: #8e9090;
+ 
+}
+#social_nav_horizontal h3 {
+  display:inline;
+  padding: 0px 10px;
+  border-bottom:dashed 1px #ccc;
+}
+#social_nav_horizontal ul {
+  margin: 0;
+ // padding: 20;
+  margin-top:40px;
+  margin-right:40px;
+  
+}
+#social_nav_horizontal ul li {
+  //float: left;
+  padding: 0px 0px 0px 10px;
+  //margin-left: 5px;
+  margin-bottom:95px;
+  list-style-type: none;
+}
+#social_nav_horizontal ul li a {
+  padding: 32px 20 5% 58px;
+  height: 12px;
+  color: #999;
+  text-decoration: none;
+  line-height: .45em;
+}
+/* These relative addresses should be ok to display the images */
+	.shipmap {
+	  background:url(themes/jqt/img/shipping.png) no-repeat;
+	  background-position:0px -1px;
+	  float: left;
+	  width:40px;
+	  border: 5px solid #ccc;
+
+	}
+	.reports {
+	  background:url(themes/jqt/img/reports.png) no-repeat;
+	  background-position:0px -1px;
+	  float: right;
+	  /* float:top; */
+	   width:40px;
+	  border: 5px solid #ccc;
+
+	}
+	.pricing {
+	  background:url(themes/jqt/img/pricing.png) no-repeat;
+	  background-position:0px -1px;
+	  float: left;
+	   width:40px;
+	   border: 5px solid #ccc;
+
+	}
+	.more {
+	  background:url(themes/jqt/img/setup.png) no-repeat;
+	  background-position:0px -1px;
+	  float: right;
+	   width:40px;
+	  border: 5px solid #ccc;
+
+	 }
+
+	
+
+
+	</style>
+
+		
+		<script type="text/javascript">
+		//$(document).ready(function(){
+
+		//('#events li:nth-child(odd)').addClass('alternate');
+
+		//});
+	</script>
+    </head>
+    <body onload="getQuoteMenuStart()">
+	<div id="container">
+		<div id="header">
+				<h2 id="logo">iCCPC</h2>
+		</div>
+		<ul id="nav">
+			
+		</ul>
+		<div id="content">
+			<div id="quotemenu">
+				
+				<div class="toolbar">
+						<h1>Quote Menu</h1>
+						<a id="backbutton" class="button back" href="#">Menu</a>
+				</div>
+				<div id="social_nav_horizontal" >
+					<ul>
+						<li><a class="shipmap" id="q" href="shipmap.html?qid=">Shipping</a></li>
+						<li><a class="reports" id="q" href="http://pit-cs-m901/reports/Croquis Detail_Q10106C0002002.xls">Reports</a></li>
+						<li><a class="pricing" id="q" href="Pricing.html?qid=">Pricing</a></li>
+						<li><a class="more"    id="q" href="More.html?qid=">More</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+    </body>
+</html>

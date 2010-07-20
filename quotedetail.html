@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>Kilo</title>
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/jqtouch.css">
+		-->
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/theme.css">
+		-->
+		 <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/bundle.css">
+		 <link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/iphone.css">
+		<script type="text/javascript"  src="http://localhost/iPhone/jqTouch/xml2json.js"></script>
+		
+		 <script type="text/javascript" src="ccpc2.js"></script>
+        <script type="text/javascript" src="jqtouch/jquery.js"></script>
+        <script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+       <style type="text/css">
+		 <style>
+	.contact
+	{
+		padding: 8px;
+		background:rgba(64,64,64,0.5);
+		border: 1px solid rgba(128,128,128,0.5);
+		opacity: 0.8;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+		margin-bottom: .5em;
+		font: white;
+		font-family:arial;
+	}
+
+
+	
+		.QName
+		{
+			//font-size:20pt;
+			font-weight:bolder;
+		}
+		
+		.CreatedDate
+		{
+		font-size:7pt;
+		//font-style:italic;
+		
+		}
+			.alternate
+			{
+				background-color: #DDDDDD;  //#99CC00 -> red
+				
+			}
+			
+			.tabled
+			{
+				font-size:16pt;
+				height:100px;
+			}
+		</STYLE>
+		<style>
+			.tabled
+			{
+				font-size:16pt;
+				height:100px;
+			}
+		</STYLE>
+    </head>
+    <body onload="getQuoteDetailStart()">
+	<div id="container">
+		<div id="header" style="background: rgb(90, 158, 207)">
+				<h2 id="logo">iCCPC</h2>
+		</div><div>&nbsp;</div>
+		<a href="#" id="navback">
+			<ul id="nav" style="color: white"></ul>
+		</a>
+		<div id="content">
+			<div>&nbsp;</div>
+			
+			<div>&nbsp;</div>
+			
+					<!--
+					<div class="toolbar">
+							<h1>Quote Details</h1>
+							<a class="button back" href="#jobs">Back</a>
+					</div>
+					-->
+					 <ul class="events" id="eventslist">
+					 
+					 
+                    <li><small id="smallid">Stuffs</small><a href='#' id="QuoteStatusID">Status</a></li>
+                    <li><small id="RefNum"></small><a href='#' id="bla">Reference Number</a></li>
+                    <li><small id="JobType"></small><a href='#' id="bla2">Job Type</a></li>
+					<li><small id="IsTemplate"></small><a href='#' id="bla4">Template</a></li>
+                   
+					</ul>
+					<BR>
+					 <ul class="events" id="eventslist">
+							<li><small id="Comments"></small><a href='#' id="bl3">Comments</a></li>	
+					 </ul>
+					<ul>
+						<li><a href="quotemenu.html?qid=" id="quotemenulink"><small id="arra">></small>Menu Options...</a></li>
+					</ul>
+					
+			</div>
+		</div>
+	</div>
+    </body>
+</html>
+

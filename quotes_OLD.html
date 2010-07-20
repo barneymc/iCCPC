@@ -1,0 +1,47 @@
+
+<html>
+    <head>
+        <title>Kilo</title>
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/jqtouch.css">
+		-->
+		
+        <link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/theme.css">
+				
+		<script type="text/javascript"  src="http://localhost/iPhone/jqTouch/xml2json.js"></script>
+		
+		 <script type="text/javascript" src="ccpc2.js"></script>
+        <script type="text/javascript" src="jqtouch/jquery.js"></script>
+        <script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+       
+		<style>
+			.tabled
+			{
+				font-size:16pt;
+				height:100px;
+			}
+		</STYLE>
+    </head>
+    <body onload="getQuotesStart()">
+	
+	<div id="quotes">
+			<div class="toolbar">
+					<h1>Quotes</h1>
+					<a id="backbutton" class="button back" href="#">JobFiles</a>
+			</div>
+			<div id="textdiv">
+				<textarea id="textq" name="textq" cols="60" rows="10">Stuff</textarea>
+			</div>
+			<ul class="edgetoedge">
+				<li class="arrow"><a id="0" href="#jobs" onclick="readrows();">JobFiles</a></li>
+				<li class="arrow" id="quoteTemplate" style="display:none">
+					<a id="q" href="#quotefile">
+						<span class="QName">&nbsp;&nbsp;</span>
+						<span class="CreatedDate">&nbsp;&nbsp;</span>
+						
+						Quote > </a>
+				</li>
+			</ul>
+		</div>
+    </body>
+</html>
