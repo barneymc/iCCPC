@@ -1,4 +1,4 @@
-var isActivityShowing = false;
+
    
 
 function GetQuerystringParam(name, url) {
@@ -17,28 +17,7 @@ function GetQuerystringParam(name, url) {
 						   
 						   
 						 
-						   
 						 
-						
-						   
-						   
-						   function onActivityBtn()
-						   {
-						   
-						   if(isActivityShowing)
-						   {
-						   navigator.notification.activityStop();
-						   }
-						   else
-						   {
-						   navigator.notification.activityStart();
-						   }
-						   
-						   isActivityShowing = !isActivityShowing;
-						   
-						
-		
-	}
 
 	
 	function StoreGifLocation(oldstoreword){
@@ -69,7 +48,7 @@ function GetQuerystringParam(name, url) {
 	 //onWinLoad();					   
 	var qid=GetQuerystringParam("qid");
 	LoadContactDetail(qid);
-	 onActivityBtn();
+	 //onActivityBtn();
 	}
 	
 	function getQuoteMenuStart(){
@@ -78,7 +57,7 @@ function GetQuerystringParam(name, url) {
 	$('#shipmaplink').attr('href','shipmap.html?qid=' + qid);
 	$('#backbutton').attr('href','quotedetail.html?qid=' + qid);
 	$('#contactdeatillink').attr('href','contactdetail.html?qid=' + qid);
-	 onActivityBtn();
+	 //onActivityBtn();
 	}
 	
 	
@@ -86,7 +65,7 @@ function GetQuerystringParam(name, url) {
 	// onWinLoad();					   
 	var qid=GetQuerystringParam("qid");
 	LoadQuoteDetailForthisQuote(qid);
-	 onActivityBtn();
+	 //onActivityBtn();
 	}
 	
 	
@@ -94,7 +73,7 @@ function GetQuerystringParam(name, url) {
 	// onWinLoad();
 	var jobid=GetQuerystringParam("jobid");
 	LoadQuotesForthisJob(jobid);
-	 onActivityBtn();
+	// onActivityBtn();
 	}
 	
 	
@@ -105,7 +84,7 @@ function GetQuerystringParam(name, url) {
 	var userID=GetQuerystringParam("userid");
 	$("#textm").val(userID );
 	$('#jobslink').attr('href','jobs.html?userid=' + userID);
-	 onActivityBtn();
+	 //onActivityBtn();
 	}
 
 	
@@ -115,7 +94,7 @@ function GetQuerystringParam(name, url) {
 	//alert('The userID is ' + userID + ' call the read rows...');
 	$('#backbutton').attr('href','index.html');
 	readuserrows(userID);
-						   onActivityBtn();
+						  // onActivityBtn();
 	}
 	
 	
@@ -132,7 +111,7 @@ function GetQuerystringParam(name, url) {
 						  
 						   
 				 $('#loginbutton').val('Logging in...Please wait');
-				 onActivityBtn();
+				 //onActivityBtn();
 				 //alert('Starting d call to DB');
 				 var uname=$("#username").val();
 				 var pwd=$("#password").val();

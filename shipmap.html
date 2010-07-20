@@ -29,7 +29,7 @@
 	//geocoder = new google.maps.Geocoder();
     //map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	
-	var qid=GetQuerystringParam("qid");
+		var qid=GetQuerystringParam("qid");
 	
 	
           //alert(qid);
@@ -48,13 +48,12 @@
                  error:AjaxFailedShipAddress
 
              });
-             }
 			 
-	
-	//Display the address in the map
-	//var dbaddress="ST THOMAS ROAD,	SOUTH WIGSTON,LEICESTER,LE18 4TA";
-	//$("#address").val(dbaddress);
-	
+			 //Display the address in the map
+			//var dbaddress="ST THOMAS ROAD,	SOUTH WIGSTON,LEICESTER,LE18 4TA";
+			$("#address").val(dbaddress);
+    }
+			
 
   //Get the ShipAddress from the JSON returned from the WebService
   function LoadShipAddressSucceeded(result){
@@ -93,16 +92,16 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	//initializeiphone();
-	//var qid=GetQuerystringParam("qid");
+	initializeiphone();
+	var qid=GetQuerystringParam("qid");
 	
-	//$('#backlink').attr('href','quotemenu.html?qid=' + qid);
-	$('#backlink').attr('href','index.html?locid=3');
+	$('#backlink').attr('href','quotemenu.html?qid=' + qid);
+	//$('#backlink').attr('href','index.html?locid=3');
 	//jQT.goTo('#locdetail','flip');
 	
   }
   
-  function
+
 
   function codeAddress() {
     var address = document.getElementById("address").value;

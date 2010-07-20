@@ -1,40 +1,96 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-  <head>
-	<!-- Change this if you want to allow scaling -->
-    <meta name="viewport" content="width=320; user-scalable=no" />
-
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-
-    <title>iCCPC</title>
+    <head>
+        <title>Kilo</title>
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/jqtouch.css">
+		-->
+		<!--
+        <link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/theme.css">
+		-->
+		 <link type="text/css" rel="stylesheet" media="screen" href="jqtouch/bundle.css">
+		
+		<script type="text/javascript"  src="http://localhost/iPhone/jqTouch/xml2json.js"></script>
+		
+		 <script type="text/javascript" src="ccpc2.js"></script>
+        <script type="text/javascript" src="jqtouch/jquery.js"></script>
+        <script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+		<script type="text/javascript" src="phonegap.js"></script>
+		
+      <script type="text/javascript" charset="utf-8">
 	
-	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-
-	// If you want to prevent dragging, uncomment this section
-	/*
-	function preventBehavior(e) 
-	{ 
-      e.preventDefault(); 
-    };
-	document.addEventListener("touchmove", preventBehavior, false);
-	*/
-	
-	function onBodyLoad()
+	function onWinLoad()
 	{
-		document.addEventListener("deviceready",onDeviceReady,false);
+			document.addEventListener("deviceready",onDeviceReady,false);
 	}
 	
-	/* When this function is called, PhoneGap has been initialized and is ready to roll */
 	function onDeviceReady()
 	{
-		// do your thing!
+		
 	}
     
     </script>
-  </head>
-  <body onload="onBodyLoad()">
-  	<div>This is iCCPC - updated in Windows</div>
-  </body>
+	   
+		<style>
+			.tabled
+			{
+				font-size:16pt;
+				height:100px;
+			}
+		</STYLE>
+    </head>
+    <body onload="onWinLoad()">
+	<div id="container">
+		<div id="header">
+				<h2 id="logo">iCCPC</h2>
+		</div>
+		<ul id="nav">
+			
+		</ul>
+		<div id="content">
+			<div id="login">
+				<div class="toolbar">
+					<h1>Login</h1>
+					<a id="backbutton" class="button back" href="#settings">&nbsp;</a>
+					<!--<a class="button flip" href="#settings">Settings</a>-->
+				</div>
+				<div>
+				<table border="0" class="events">
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td style="font-family:gothic;font-color:white">Username</td><td><input id="username" type="text" style="height:25px;width:150px"/></td>
+					</tr>
+					<tr>
+						<td style="font-family:gothic">Password</td><td><input id="password" type="password" style="height:25px;width:150px"/></td>
+					</tr>
+					<tr>
+						<td class="tabled" style="display:none">UserID</td>
+						<td class="tabled" style="display:none"><input id="Box1" /></td>
+					</tr>
+				</table>
+				</div>
+				<ul class="edgetoedge">
+					
+					<li>
+					<!-- this populates the userid field -->
+					
+					<a href="#">
+						<input id="loginbutton" style="height:25px;width:160px" type="button" value="Login" onclick="login2js();return false;"/>
+					</a>			<!-- this fires the Javascript --> 
+					</li>
+				</ul>
+				<div id="menulinkdiv" style="display:none">
+					<!-- Once the userID field is populated from above call we can go to the menu.html" -->
+					<a id="menulink" href="menu.html?userid=" >
+						<input type="button" value="Menu" />
+					</a>
+				</div>		
+					<!--
+				<div id="docs">
+					This is another one Click <a href="http://frenchgrinds.ie/BLOG/wp-content/uploads/2010/05/FrenchWords.xls" target="_blank">Open</a>
+				</div>
+				    -->
+			</div>
+		</div>
+	</div>
+    </body>
 </html>
