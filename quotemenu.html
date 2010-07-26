@@ -79,23 +79,24 @@
 			<div id="quotemenu">
 				
 				<div class="toolbar">
-						<h1>Quote Menu</h1>
-						<a id="backbutton" class="button back" href="#">QuoteFile Details</a>
+						<h1>Quote Menus</h1>
+						<a id="backbutton" class="button back" href="#">< QuoteFile Details</a>
 				</div>
-				<!--
-				<div id="textdiv">
-					<textarea id="texta" name="texta" cols="60" rows="10">Stuff</textarea>
+				<div>
+					<a href="shipmap.html?qid=45974" id="btnLink" ><input type="button" id="btnShip" value="Ship" /></a>
 				</div>
-				-->
+				<div>
+					<input type="text" id="qaddress" value=""/>
+				</div>
 				<ul class="events" id="eventslist">
 					<li class="day-break">
 						<span class="day">Thursday</span>
 						<span class="num">May 20</span>
 					</li>
-					<li class="arrow"><a id="0" href="#jobs" onclick="readrows();">JobFiles</a></li>
+					
 					<li class="event" id="entryTemplate">
 						<a id="shipmaplink" href="shipmap.html?qid=">
-							<img alt="Shipping" class="avatar" src="themes/jqt/img/shipping.png"><span class="Shipping" >Shipping</span><BR>
+							<img alt="Shipping" class="avatar" src="themes/jqt/img/shipping.png"><span class="Shipping" id="shipspan">Shipping</span><BR>
 						</a>
 					</li>
 					<li class="event" id="entryTemplate">

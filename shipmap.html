@@ -28,11 +28,12 @@
 	//	}
 	//geocoder = new google.maps.Geocoder();
     //map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	
+	try{
+	alert('initializeiPhone');
 		var qid=GetQuerystringParam("qid");
 	
 	
-          //alert(qid);
+          alert(qid);
           var odata="{'QuoteFileID':" + qid + "}";
            //alert(odata);
           //Call the webservice
@@ -51,17 +52,92 @@
 			 
 			 //Display the address in the map
 			//var dbaddress="ST THOMAS ROAD,	SOUTH WIGSTON,LEICESTER,LE18 4TA";
-			$("#address").val(dbaddress);
+			//$("#address").val(dbaddress);
+		}
+		catch(b){
+			alert('Error in initializeiPhone ' + b);
+		}
     }
-			
+	
+function MyOverlay(options) {
+    this.setValues(options);
+
+    var div = this.div_= document.createElement('div');
+
+    div.className = "overlay";
+};
+
+// MyOverlay is derived from google.maps.OverlayView
+MyOverlay.prototype = new google.maps.OverlayView;
+
+MyOverlay.prototype.onAdd = function() {
+
+    var pane = this.getPanes().overlayLayer;
+    pane.appendChild(this.div_);
+
+}
+
+MyOverlay.prototype.onRemove = function() {
+    this.div_.parentNode.removeChild(this.div_);
+}
+
+MyOverlay.prototype.draw = function() {
+    var projection = this.getProjection();
+    var position = projection.fromLatLngToDivPixel(this.getMap().getCenter());
+
+    var div = this.div_;
+    div.style.left = position.x + 'px';
+    div.style.top = position.y + 'px';
+    div.style.display = 'block';
+};
+		
+ function moveMarker() {
+						
+						var OverLayMap = new MyOverlay({map:map});
+						var Dublin=new google.maps.LatLng(52.00000,-8.00000);
+						var Galway=new google.maps.LatLng(51,-8);
+						marker=new google.maps.Marker({
+							position:Dublin,
+							map:OverLayMap
+							});
+							
+						marker=new google.maps.Marker({
+							position:Galway,
+							map:OverLayMap
+							});	
+						//Add marker in Dublin
+						
+						
+						//map.setCenter(Dublin);
+						
+                        //var p1 = map.fromLatLngToDivPixel(marker.getLatLng());
+						var p1 = OverLayMap.fromLatLngToDivPixel(Galway);
+                        var p2 = OverLayMap.fromLatLngToDivPixel(Dublin);
+                        var deltaPixels = Math.abs(p2.y - p1.y);
+                        var step = Math.floor(deltaPixels/ 10);
+                        var newLatLng = OverLayMap.fromDivPixelToLatLng(new GPoint(p1.x,p1.y+step));
+                        marker.setLatLng(newLatLng)
+
+                        if (deltaPixels - step > step) {
+                                window.setTimeout("moveMarker()",200);
+                          }
+
+                } 
+				
 
   //Get the ShipAddress from the JSON returned from the WebService
   function LoadShipAddressSucceeded(result){
+  try{
+  alert('LoadShipAddressSucceeded' + result.d);
 	var dbaddress=result.d;
 	var cleanaddress=TidyJSONString(dbaddress);
 	$("#address").val(cleanaddress);
 	codeAddress();
 	// onActivityBtn();
+	}
+	catch(b){
+		alert('Error in LoadShipAddressSucceeded ' + b);
+	}
   }
   
   //Use this function to tidy up the address returned from JSON web service
@@ -83,29 +159,61 @@
   }
   
   function initialize() {
-  	  // onWinLoad();
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
+  try{
+	//alert('initialize');
+	var add=GetQuerystringParam("address");
+	var qid=GetQuerystringParam("qid");
+	var userid=GetQuerystringParam("userid");
+	
+    //alert(add);
+	$("#address").val(add);
+	geocoder = new google.maps.Geocoder();
+	
+	//If we remove this line will it stop initializeing at this LatLng?
+    //var latlng = new google.maps.LatLng(-34.397, 150.644);
+	
+	var myOptions = {
       zoom: 8,
-      center: latlng,
+    //  center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	initializeiphone();
-	var qid=GetQuerystringParam("qid");
 	
-	$('#backlink').attr('href','quotemenu.html?qid=' + qid);
-	//$('#backlink').attr('href','index.html?locid=3');
-	//jQT.goTo('#locdetail','flip');
+	 if (geocoder) {
+      geocoder.geocode( { 'address': add}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map, 
+              position: results[0].geometry.location
+          });
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
 	
+	
+    
+	
+	$('#backlink').attr('href','quotemenu.html?qid=' + qid+'&userid='+userid);
+	
+	}
+	
+	catch(b){
+		alert('Error in initialize ' + b);
+	}
   }
   
 
 
   function codeAddress() {
+  try
+  	{
+  	
+  	//alert('Code Address');
     var address = document.getElementById("address").value;
-	//alert(address);
+	
     if (geocoder) {
       geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
@@ -119,6 +227,11 @@
         }
       });
     }
+	}
+	
+	catch(b){
+		alert('Error in codeAddress ' + b);
+	}
   }
 </script>
 </head>
@@ -129,6 +242,8 @@
     
     &nbsp;<input id="address" type="textbox" value="Sydney, NSW" style="width:300px"/><BR><BR>
     &nbsp;<input type="button" value="Locate" onclick="codeAddress()"/><BR><P></P>
+	
+	
   </div>
 &nbsp;<div id="map_canvas" style="width:100%; height:90%"></div>
 </body>

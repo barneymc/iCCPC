@@ -51,11 +51,91 @@ function GetQuerystringParam(name, url) {
 	 //onActivityBtn();
 	}
 	
-	function getQuoteMenuStart(){
-	 //onWinLoad();					   
+	
+	function getAddress(){
+
+	try{
+		//alert('initializeiPhone');
+	
+		var qid=GetQuerystringParam("qid");
+          //alert(qid);
+          var odata="{'QuoteFileID':" + qid + "}";
+           //alert(odata);
+          //Call the webservice
+          $.ajax({
+                 type: "POST",
+                 url: "http://pit-cs-m901.ingerrand.com/IR2/Service1.asmx/GetShipAddressForQuote",
+                 data: odata,
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function(msg) {
+                     LoadShipAddressSucceeded(msg);
+                 },
+                 error:AjaxFailedShipAddress
+
+             }); 	
+	}
+	
+	catch(b){
+			alert('Error in initializeiPhone ' + b);
+		}
+  
+	}
+
+	
+	//Get the ShipAddress from the JSON returned from the WebService
+function LoadShipAddressSucceeded(result){
+  try{
+  	//alert('LoadShipAddressSucceeded' + result.d);
 	var qid=GetQuerystringParam("qid");
+	var userid=GetQuerystringParam("userid");
+	var dbaddress=result.d;
+	var cleanaddress=TidyJSONString(dbaddress);
+	$("#qaddress").val(cleanaddress);
+	$('#shipmaplink').attr('href','shipmap.html?address=' +cleanaddress+'&qid='+qid+'&userid='+userid);
+	$('#btnLink').attr('href','shipmap.html?address=' +cleanaddress+'&qid='+qid+'&userid='+userid);
+	var newtag='Shipping Address :  ' + cleanaddress;
+	$('#shipspan').html(newtag)
+	}
+	
+	catch(b){
+		alert('Error in LoadShipAddressSucceeded ' + b);
+	}
+  }
+
+
+//Use this function to tidy up the address returned from JSON web service
+  function TidyJSONString(stringval){
+	var newtext="";
+	for (var i=0;i< stringval.length;i++){
+		var c=stringval.charCodeAt(i);
+		var d=stringval.charAt(i);
+		if	(	(c !=91) && 		
+				(c !=93) &&		
+				(c !=34) &&		
+				(c !=32)	
+			) {newtext+=d;		//Check for [,],"" and blankspace and ignore these
+				}
+			
+	
+	}	
+	return newtext;
+  }
+	function getQuoteMenuStart(){
+
+	//Hide the textbox the is populated with the address
+	$('#qaddress').hide();
+	$('#btnShip').hide();
+	
+	//alert('getQuoteMenuStart');
+	
+	var qid=GetQuerystringParam("qid");
+	var userid=GetQuerystringParam("userid");
+	
+	getAddress();
+	
 	$('#shipmaplink').attr('href','shipmap.html?qid=' + qid);
-	$('#backbutton').attr('href','quotedetail.html?qid=' + qid);
+	$('#backbutton').attr('href','quotedetail.html?qid=' + qid +'&userid=' + userid);
 	$('#contactdeatillink').attr('href','contactdetail.html?qid=' + qid);
 	 //onActivityBtn();
 	}
@@ -107,7 +187,7 @@ function GetQuerystringParam(name, url) {
 						   
         	function login2js(){
 			     
-						  
+			try{  
 						  
 						   
 				 $('#loginbutton').val('Logging in...Please wait');
@@ -129,6 +209,11 @@ function GetQuerystringParam(name, url) {
 					 error:AjaxFailed
 
 				 });
+				 }
+				 catch(b){
+					alert('Error login2js ' + b);
+				 }
+				 
 			
 			}
 		
@@ -154,7 +239,7 @@ function GetQuerystringParam(name, url) {
           }
          
           function AjaxFailed(result) {
-              alert("Failed " + result.status + ' ' + result.statusText);
+              alert("AjaxFailed - Failed " + result.status + ' ' + result.statusText);
           }
 
 			//Modified reasuserrows to call the JSON webservice now
@@ -279,7 +364,7 @@ function GetQuerystringParam(name, url) {
 				//$('#ContactNumber').html(c[0][0]);
 				$('#ContactNumber').html(telnumberlink);
 				$('#Address1').html(c[0][1]);
-				$('#nav').html('<-' + ' QuoteFile ' + c[0][6]);
+				$('#nav').html('<' + ' QuoteFiles [' + c[0][6] + ']');
 				$('#navback').attr('href','quotemenu.html?qid=' + qid);
 				
 			}
@@ -289,6 +374,7 @@ function GetQuerystringParam(name, url) {
 				{
 				//alert('In LoadQuoteDetailsSucceeded');
 				var qid=GetQuerystringParam("qid");
+				var userid=GetQuerystringParam("userid");
 				var c=eval(result.d);
 				//alert('Quotedetail' + c[0][3]);
 				//$('#QuoteStatus').val(c[0][0]);  //Note we must specify [0] also
@@ -301,20 +387,22 @@ function GetQuerystringParam(name, url) {
 				$('#Comments').html(c[0][3]);  //Note we must specify [0] also
 				$('#IsTemplate').html(c[0][4]);  //Note we must specify [0] also
 				
-				$('#quotemenulink').attr('href','quotemenu.html?qid=' + qid);
+				$('#quotemenulink').attr('href','quotemenu.html?qid=' + qid + '&userid='+userid);
 				
-				$('#nav').html('<-' + ' QuoteFile ' + c[0][6]);
-				$('#navback').attr('href','quotes.html?jobid=' + c[0][5]);
+				$('#nav').html('< ' + ' QuoteFiles [' + c[0][6] + ']');
+				$('#navback').attr('href','quotes.html?jobid=' + c[0][5]+'&userid='+userid);
 				
 			}	
              
               function LoadQuotesSucceeded(result){
-			  var userid=GetQuerystringParam("userid");
+			  
 				//alert(result.d);
 				$("#textq").val(result.d);
 				//alert(result.d);
 				//alert(result.d);
-				var userid=0;
+				//var userid=0;
+				var userid=GetQuerystringParam("userid");
+				
 				var c=eval(result.d);
 				for (var i in c)
 					{
@@ -329,13 +417,13 @@ function GetQuerystringParam(name, url) {
 						newEntryRow.appendTo('#quotes ul');
 						newEntryRow.find('.QName').text(c[i][1]);
 						newEntryRow.find('.CreatedDate').text(c[i][2]);
-						newEntryRow.find('#q').attr('href','quotedetail.html?qid=' + c[i][0]);
+						newEntryRow.find('#q').attr('href','quotedetail.html?qid=' + c[i][0]+'&userid='+userid);
 						//newEntryRow.find('38428').text(c[i][1]);
 						$('#eventslist li:nth-child(odd)').addClass('alternate');
-						userid=c[i][3];
+						//userid=c[i][3];   What is this line for???
 						
 					}
-			
+				var userid=GetQuerystringParam("userid");
 				$('#backbutton').attr('href','jobs.html?userid='+userid);	
 			
 			}
